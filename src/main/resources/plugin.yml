@@ -1,0 +1,4 @@
+name: SCoordinates
+version: '${project.version}'
+main: sullexxx.scoordinates.SCoordinates
+api-version: '1.21'

@@ -1,0 +1,6 @@
+Hide-Coordinates: true # hide a coordinates in f3
+Coordinate-item:
+  Enable: true
+  Material: COMPASS
+Coordinate-ActionBar:
+  format: "&8{X} &r| &8{Y} &r| &8{Z}" # Legacy and MiniMessage format!
