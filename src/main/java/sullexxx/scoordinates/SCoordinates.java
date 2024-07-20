@@ -4,10 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -25,10 +22,15 @@ public class SCoordinates extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-        if (getConfig().getBoolean("Hide-Coordinates")) Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamerule reducedDebugInfo true");
+        if (getConfig().getBoolean("Hide-Coordinates")) {
+            for (World world : Bukkit.getWorlds()) {
+                world.setGameRule(GameRule.REDUCED_DEBUG_INFO, true);
+            }
+        }
         getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("SCoordinates enabled and ready to work.");
     }
+
 
     @Override
     public void onDisable() {
